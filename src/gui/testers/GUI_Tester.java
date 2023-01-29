@@ -1,4 +1,4 @@
-package src.main.gui.testing;
+package src.gui.testers;
 
 import src.gui.MainGUIWindow;
 
