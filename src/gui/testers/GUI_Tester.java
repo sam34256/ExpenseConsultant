@@ -1,6 +1,6 @@
-package src.gui.testers;
+package gui.testers;
 
-import src.gui.MainGUIWindow;
+import gui.MainGUIWindow;
 
 public class GUI_Tester {
 

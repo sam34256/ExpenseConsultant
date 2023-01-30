@@ -1,19 +1,17 @@
-package src.gui;
+package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-public class GUI_MainBoxP extends JPanel implements GUI_Settings_Variables{
+public class GUI_MainBoxP extends JPanel implements GUI_Settings_Variables {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private JPanel jpMainHeadingBoxP = new JPanel();
 	private JPanel jpMainActionBoxP = new JPanel();
 	private JPanel jpMainMessagesBoxP = new JPanel();
@@ -30,12 +28,11 @@ public class GUI_MainBoxP extends JPanel implements GUI_Settings_Variables{
 	private JPanel jpUserInputBox2P = new JPanel();
 
 	private JPanel jpUserInputBox3P = new JPanel();
-	
-	
+
 	private JLabel jlblHeadTitle = new JLabel("Main Title", JLabel.CENTER);
 	private JLabel jlblSubTitle = new JLabel("Sub Title", JLabel.CENTER);
 	private JLabel jlblUserInputTitle = new JLabel("Action Input Title", JLabel.CENTER);
-	
+
 	private void for_testing() {
 		jpMainHeadingBoxP.setBorder(new TitledBorder("jpMainHeadingBoxP"));
 		jpMainActionBoxP.setBorder(new TitledBorder("jpMainActionBoxP"));
@@ -50,25 +47,25 @@ public class GUI_MainBoxP extends JPanel implements GUI_Settings_Variables{
 		jpUserInputBox2P.setBorder(new TitledBorder("jpUserInputBox2P"));
 		jpUserInputBox3P.setBorder(new TitledBorder("jpUserInputBox3P"));
 	}
-	
+
 	private void setVisualSettings() {
 		this.setBackground(allGuiBoxesBackgroundCColor);
 		this.setForeground(allGuiBoxesForegroundCColor);
 	}
-	
+
 	public GUI_MainBoxP() {
 		for_testing();
 		setVisualSettings();
-		
+
 		setLayout(new BorderLayout());
-		jpMainActionBoxP.setLayout(new GridLayout(2,1));
-		
-		jpMainHeadingBoxP.setLayout(new GridLayout(2,1));
+		jpMainActionBoxP.setLayout(new GridLayout(2, 1));
+
+		jpMainHeadingBoxP.setLayout(new GridLayout(2, 1));
 		jpMainHeadingBoxP.add(jlblHeadTitle);
 		jpMainHeadingBoxP.add(jlblSubTitle);
 		add(jpMainHeadingBoxP, BorderLayout.NORTH);
-		
-		jpSelectionActionBoxP.setLayout(new GridLayout(1,3));
+
+		jpSelectionActionBoxP.setLayout(new GridLayout(1, 3));
 		jpSelectActionBox1P.setLayout(new BorderLayout());
 		jpSelectActionBox1P.add(new GUI_AvailableActionsSelectionP(), BorderLayout.CENTER);
 		jpSelectionActionBoxP.add(jpSelectActionBox1P);
@@ -76,14 +73,14 @@ public class GUI_MainBoxP extends JPanel implements GUI_Settings_Variables{
 		jpSelectActionBox2P.add(new GUI_InsertDataP(), BorderLayout.CENTER);
 		jpSelectionActionBoxP.add(jpSelectActionBox2P);
 		jpSelectActionBox3P.setLayout(new BorderLayout());
-		jpSelectActionBox3P.add(new GUI_AddAccountP(), BorderLayout.CENTER);		
+		jpSelectActionBox3P.add(new GUI_AddAccountP(), BorderLayout.CENTER);
 		jpSelectionActionBoxP.add(jpSelectActionBox3P);
 		jpMainActionBoxP.add(jpSelectionActionBoxP);
-		
+
 		jpActionInputBoxP.setLayout(new BorderLayout());
 		jpActionInputBoxP.add(jlblUserInputTitle, BorderLayout.NORTH);
-		
-		jpActionUserInputBoxP.setLayout(new GridLayout(1,3));
+
+		jpActionUserInputBoxP.setLayout(new GridLayout(1, 3));
 		jpUserInputBox1P.setLayout(new BorderLayout());
 		jpUserInputBox1P.add(new GUI_BankInfoInputP(), BorderLayout.CENTER);
 		jpActionUserInputBoxP.add(jpUserInputBox1P);
@@ -94,19 +91,16 @@ public class GUI_MainBoxP extends JPanel implements GUI_Settings_Variables{
 		jpUserInputBox3P.setLayout(new BorderLayout());
 		jpUserInputBox3P.add(new GUI_AddAcctControlButtonsP(), BorderLayout.CENTER);
 		jpActionUserInputBoxP.add(jpUserInputBox3P);
-		
+
 		jpActionInputBoxP.add(jpActionUserInputBoxP, BorderLayout.CENTER);
-		
-		
+
 		jpMainActionBoxP.add(jpActionInputBoxP);
 		add(jpMainActionBoxP, BorderLayout.CENTER);
-		
-		
+
 		jpMainMessagesBoxP.setLayout(new BorderLayout());
 		jpMainMessagesBoxP.add(new GUI_MessagesDislplayBoxP(), BorderLayout.CENTER);
 		add(jpMainMessagesBoxP, BorderLayout.SOUTH);
-		
-		
+
 	}
 
 	@Override

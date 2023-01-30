@@ -1,5 +1,4 @@
-package src.gui;
-
+package gui;
 
 import java.awt.Component;
 
@@ -7,15 +6,17 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
-public class GUI_Menu extends JMenuBar implements GUI_Settings_Variables{
+
+public class GUI_Menu extends JMenuBar implements GUI_Settings_Variables {
 	private static final long serialVersionUID = 1L;
 	private GUI_Menu_Actions a;
-	public GUI_Menu(){
-		
+
+	public GUI_Menu() {
+
 		a = new GUI_Menu_Actions();
-		
+
 		JMenu jmFile = new JMenu("File");
-		jmFile.setMnemonic('F');	
+		jmFile.setMnemonic('F');
 		JMenuItem jmiSave = new JMenuItem("Save");
 		jmiSave.setMnemonic('v');
 		jmFile.add(jmiSave);
@@ -28,10 +29,9 @@ public class GUI_Menu extends JMenuBar implements GUI_Settings_Variables{
 		jmFile.add(jmiExit);
 		add(jmFile);
 		jmiExit.addActionListener(a);
-		
-		
+
 		JMenu jmSettings = new JMenu("Settings");
-		jmSettings.setMnemonic('S');	
+		jmSettings.setMnemonic('S');
 		JMenu jmView = new JMenu("View");
 		jmView.setMnemonic('V');
 		JMenuItem jmiAddData = new JMenuItem("Insert Data");
@@ -48,10 +48,9 @@ public class GUI_Menu extends JMenuBar implements GUI_Settings_Variables{
 		jmView.add(jmiEditData);
 
 		jmSettings.add(jmView);
-		
+
 		add(jmSettings);
-		
-		
+
 		JMenu jmHelp = new JMenu("Help");
 		jmHelp.setMnemonic('H');
 		JMenuItem jmiUse = new JMenuItem("App Use");
@@ -61,9 +60,9 @@ public class GUI_Menu extends JMenuBar implements GUI_Settings_Variables{
 		JMenuItem jmiAbout = new JMenuItem("About");
 		jmiAbout.setMnemonic('A');
 		jmiAbout.addActionListener(a);
-		jmHelp.add(jmiAbout);	
+		jmHelp.add(jmiAbout);
 		add(jmHelp);
-		
+
 		JMenu jmWindow = new JMenu("GUI Windows Views");
 		jmWindow.setMnemonic('W');
 		JMenuItem jmiShowRecordsWindow = new JMenuItem("Show Records Window");
@@ -71,12 +70,11 @@ public class GUI_Menu extends JMenuBar implements GUI_Settings_Variables{
 		jmiShowRecordsWindow.addActionListener(a);
 		jmWindow.add(jmiShowRecordsWindow);
 		add(jmWindow);
-		
+
 		JMenu jmFontSize = new JMenu("Adjust Text Size");
 		jmFontSize.setMnemonic('T');
 		jmFontSize.addActionListener(a);
 
-		
 		JMenuItem jmiIncreaseFontSize = new JMenuItem("Increse GUI Text Size (+)");
 		jmiIncreaseFontSize.setMnemonic('+');
 		jmiIncreaseFontSize.addActionListener(a);
@@ -85,9 +83,10 @@ public class GUI_Menu extends JMenuBar implements GUI_Settings_Variables{
 		jmiDecreaseFontSize.addActionListener(a);
 		jmFontSize.add(jmiIncreaseFontSize);
 		jmFontSize.add(jmiDecreaseFontSize);
-		
+
 		add(jmFontSize);
 	}
+
 	public GUI_Menu(Component mainGUIWindow) {
 		this();
 		a.setMainGUIComponent(mainGUIWindow);
