@@ -149,6 +149,7 @@ public class AESUtil {
 		return new String(cipher.doFinal(Base64.getDecoder().decode(cipherText)));
 	}
 
+	/*
 	public static void main(String[] args)
 			throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, NoSuchPaddingException,
 			InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException {
@@ -167,5 +168,5 @@ public class AESUtil {
 		}
 		System.out.println("THANK YOU!\n\n");
 	}
-
+	*/
 }
