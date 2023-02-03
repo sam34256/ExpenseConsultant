@@ -152,23 +152,23 @@ public class AESUtil {
 		return new String(cipher.doFinal(Base64.getDecoder().decode(cipherText)));
 	}
 
-//	public static void main(String[] args)
-//			throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, NoSuchPaddingException,
-//			InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException {
-//		String input = "TEST1 TEST2 TEST3 TEST4";
-//		String CT = "";
-//		String PT = "";
-//		for (int i = 1; i <= 5; i++) {
-//			System.out.println("Attempt # " + i + ":");
-//			SecretKey SK = getKeyFromPassword("P@55word", "12345");
-//			IvParameterSpec IV = generateIv();
-//			CT = encryptPasswordBased(input, SK, IV);
-//			PT = decryptPasswordBased(CT, SK, IV);
-//			System.out.println("Original text   = " + input);
-//			System.out.println("Ciphered text   = " + CT);
-//			System.out.println("Deciphered text = " + PT + "\n");
-//		}
-//		System.out.println("THANK YOU!\n\n");
-//	}
+	public static void main(String[] args)
+			throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, NoSuchPaddingException,
+			InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException {
+		String input = "TEST1 TEST2 TEST3 TEST4";
+		String CT = "";
+		String PT = "";
+		for (int i = 1; i <= 5; i++) {
+			System.out.println("Attempt # " + i + ":");
+			SecretKey SK = getKeyFromPassword("P@55word", "12345");
+			IvParameterSpec IV = generateIv();
+			CT = encryptPasswordBased(input, SK, IV);
+			PT = decryptPasswordBased(CT, SK, IV);
+			System.out.println("Original text   = " + input);
+			System.out.println("Ciphered text   = " + CT);
+			System.out.println("Deciphered text = " + PT + "\n");
+		}
+		System.out.println("THANK YOU!\n\n");
+	}
 
 }
