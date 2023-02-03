@@ -144,14 +144,16 @@ public class Transaction {
 		this.category = category;
 	}
 
-// ------------------- compare-by-criteria methods -------------------------	
-//  if NEGATIVE number is returned, whoever's compare method was called
-//	is "LESS THAN" the object used as a parameter, in the property compared	
-//
-//  if 0 is returned, the objects are "EQUAL", in the property compared	
-//
-//  if POSITIVE number is returned, whoever's compare method was called
-//  is "GREATER THAN" the object used as a parameter, in the property compared
+// ------------------- compare-by-criteria methods -------------------------
+//  ALWAYS just ONE property of the two Transactions is being compared;
+//	
+//  if NEGATIVE number is returned, the calling Transaction
+//	is "LESS THAN" the Transaction in parameters,
+//	
+//  if 0 is returned, the two Transactions are "EQUAL",
+//	
+//  if POSITIVE number is returned, the calling Transaction
+//	is "GREATER THAN" the Transaction in parameters,
 
 	public int compareTransDates(Transaction transaction) {
 		return this.transDate.compareTo(transaction.getTransDate());
