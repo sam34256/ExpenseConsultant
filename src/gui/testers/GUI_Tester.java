@@ -1,6 +1,6 @@
 package gui.testers;
 
-import gui.MainGUIWindow;
+import gui.mainWindows.MainGUIWindow;
 
 public class GUI_Tester {
 

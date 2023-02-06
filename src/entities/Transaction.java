@@ -4,14 +4,9 @@ import java.util.Calendar;
 
 public class Transaction {
 
-	public static final int INCOME = 1;
-	public static final int FEE = 2;
-	public static final int ESSENTIALS = 3;
-	public static final int TRANSPORT = 4;
-	public static final int ENTERTAINMENT = 5;
-	public static final int ALCOHOL = 6;
+	public static final int INCOME = 1, FEE = 2, ESSENTIALS = 3, TRANSPORT = 4, ENTERTAINMENT = 5, ALCOHOL = 6,
+			OTHER = 50;
 //	many more to be added	
-	public static final int OTHER = 0;
 
 	private Calendar transDate;
 	private Calendar postedDate;
@@ -144,14 +139,16 @@ public class Transaction {
 		this.category = category;
 	}
 
-// ------------------- compare-by-criteria methods -------------------------	
-//  if NEGATIVE number is returned, whoever's compare method was called
-//	is "LESS THAN" the object used as a parameter, in the property compared	
-//
-//  if 0 is returned, the objects are "EQUAL", in the property compared	
-//
-//  if POSITIVE number is returned, whoever's compare method was called
-//  is "GREATER THAN" the object used as a parameter, in the property compared
+// ------------------- compare-by-criteria methods -------------------------
+//  ALWAYS just ONE property of the two Transactions is being compared;
+//	
+//  if NEGATIVE number is returned, the calling Transaction
+//	is "LESS THAN" the Transaction in parameters,
+//	
+//  if 0 is returned, the two Transactions are "EQUAL",
+//	
+//  if POSITIVE number is returned, the calling Transaction
+//	is "GREATER THAN" the Transaction in parameters,
 
 	public int compareTransDates(Transaction transaction) {
 		return this.transDate.compareTo(transaction.getTransDate());
