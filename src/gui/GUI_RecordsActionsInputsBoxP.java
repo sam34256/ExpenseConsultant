@@ -7,24 +7,26 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class GUI_RecordsActionsInputsBoxP extends JPanel implements GUI_Settings_Variables {
+import gui.settings.GUI_Settings_Variables;
+
+public class GUI_RecordsActionsInputsBoxP extends JPanel implements GUI_Settings_Variables{
 
 	private static final long serialVersionUID = 1L;
 
-	private JTextField jtfRecordsSearchIn1 = new JTextField();
-	private JTextField jtfRecordsSearchIn2 = new JTextField();
-	private JTextField jtfRecordsSearchIn3 = new JTextField();
+		private JTextField jtfRecordsSearchIn1 = new JTextField();
+		private JTextField jtfRecordsSearchIn2 = new JTextField();
+		private JTextField jtfRecordsSearchIn3 = new JTextField();
 
 	public GUI_RecordsActionsInputsBoxP() {
-		setLayout(new GridLayout(4, 1));
+		setLayout(new GridLayout(4,1));
 		JPanel jpBox1 = new JPanel();
-		jpBox1.setLayout(new GridLayout(1, 2));
+		jpBox1.setLayout(new GridLayout(1,2));
 		JPanel jpBox2 = new JPanel();
-		jpBox2.setLayout(new GridLayout(1, 2));
+		jpBox2.setLayout(new GridLayout(1,2));
 		JPanel jpBox3 = new JPanel();
-		jpBox3.setLayout(new GridLayout(1, 2));
+		jpBox3.setLayout(new GridLayout(1,2));
 		JPanel jpBox4 = new JPanel();
-		jpBox4.setLayout(new GridLayout(1, 2));
+		jpBox4.setLayout(new GridLayout(1,2));
 
 		add(new JLabel("Enter Parameters of Your Record Search"));
 

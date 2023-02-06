@@ -1,4 +1,4 @@
-package gui;
+package gui.mainWindows;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -6,10 +6,14 @@ import java.awt.Component;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import gui.GUI_MainBoxP;
+import gui.menu.GUI_Menu;
+import gui.settings.GUI_Settings_Variables;
 public class MainGUIWindow extends JFrame implements GUI_Settings_Variables {
 	private static final long serialVersionUID = 1L;
-
 	public MainGUIWindow() {
+//		setBackground(guiFramesBackgroundColor);
+//		setForeground(guiFramesForegroundColor);
 
 		setJMenuBar(new GUI_Menu(this));
 		setTitle(strAppOfficialName);
@@ -18,16 +22,19 @@ public class MainGUIWindow extends JFrame implements GUI_Settings_Variables {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 
+
+
 		add(new GUI_MainBoxP(), BorderLayout.CENTER);
 
 		add(new JLabel(strCopyRigts, JLabel.CENTER), BorderLayout.SOUTH);
 		setVisible(true);
 	}
-
 	@Override
 	public Component getComponent() {
 		// TODO Auto-generated method stub
 		return this;
 	}
 
+
 }
+
