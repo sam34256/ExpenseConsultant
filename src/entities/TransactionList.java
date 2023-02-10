@@ -34,7 +34,7 @@ public class TransactionList {
 	}
 
 	/**
-	 * Removes a Transaction, identified by its reference number, from the list.
+	 * Removes a Transaction, identified by its reference number, from the list
 	 * 
 	 * @param refNumber - a reference number of the Transaction to be removed
 	 * @return TRUE - if everything goes well FALSE - if there's trouble and
@@ -389,7 +389,7 @@ public class TransactionList {
 	 * 
 	 * @param comparator - the number of parameter/ field of Transaction to sort by
 	 * @return ListIterator of the sorted list (ListIterator can be traversed in
-	 *         EITHER direction)
+	 *         either direction)
 	 */
 	public ListIterator<Transaction> sort(int comparator) {
 		ArrayList<Transaction> resultList = new ArrayList<Transaction>();
