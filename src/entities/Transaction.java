@@ -2,8 +2,16 @@ package entities;
 
 import java.util.Calendar;
 
+/**
+ * 
+ * Transaction class represents a single bank transaction.
+ * 
+ * @author SPAM (Sammy Dinka, Andrey Yefermov, Pavel Danek) © 2023
+ *
+ */
 public class Transaction {
 
+//	Constants representing a Transaction category/ type.
 	public static final int INCOME = 1, FEE = 2, ESSENTIALS = 3, TRANSPORT = 4, ENTERTAINMENT = 5, ALCOHOL = 6,
 			OTHER = 50;
 //	many more to be added	
@@ -15,6 +23,12 @@ public class Transaction {
 	private double amount;
 	private int category;
 
+//	Constants representing different fields of Transaction; used in sorting.
+	public static final int POSTED_DATE = 1, REF_NUMBER = 2, DESCRIPTION = 3, MEMO = 4, AMOUNT = 5, CATEGORY = 6;
+
+	/**
+	 * Class constructor.
+	 */
 	public Transaction(Calendar postedDate, String refNumber, String description, String memo, double amount,
 			int category) {
 		this.postedDate = postedDate;
@@ -26,13 +40,20 @@ public class Transaction {
 	}
 
 // -------------- static Calendar conversion helpers -----------------------	
-
+//
+	/**
+	 * Returns a Calendar type of date from a String format, used in exported OFX
+	 * files.
+	 * 
+	 * @param stringDate - format YYYYMMDDHHMMSS
+	 * @return same date as a Calendar type
+	 */
 	public static Calendar returnCalendarFromOFX(String stringDate) {
-//	stringDate in a format: "20230218120000"		
 		Calendar date = Calendar.getInstance();
 		int year, month, day, hour, minute, second;
 		try {
 			year = Integer.parseInt(stringDate.substring(0, 4));
+//			the twelve months in Calendar range from 0-11
 			month = (Integer.parseInt(stringDate.substring(4, 6))) - 1;
 			day = Integer.parseInt(stringDate.substring(6, 8));
 			hour = Integer.parseInt(stringDate.substring(8, 10));
@@ -51,15 +72,30 @@ public class Transaction {
 		return date;
 	}
 
+	/**
+	 * Returns a Calendar type of date from a String format, used in paper
+	 * statements.
+	 * 
+	 * @param stringDate - format MM/DD
+	 * @param year       - additional information necessary; format YYYY
+	 * @return same date as a Calendar type
+	 */
 	public static Calendar returnCalendarFromMMslashDD(String stringDate, String year) {
-//	stringDate in a format: "05/30", year in a format: "2022"
 		stringDate = year + stringDate.substring(0, 2) + stringDate.substring(3, 5) + "000000";
 		return returnCalendarFromOFX(stringDate);
 	}
 
+	/**
+	 * Returns a String format date, used in exported OFX files, from a Calendar
+	 * type of date.
+	 * 
+	 * @param date - Calendar type
+	 * @return a String in format YYYYMMDDHHMMSS
+	 */
 	public static String returnOFXFromCalendar(Calendar date) {
 		String year, month, day, hour, minute, second;
 		year = Integer.toString(date.get(Calendar.YEAR));
+//		the twelve months in Calendar range from 0-11
 		month = Integer.toString(date.get(Calendar.MONTH) + 1);
 		day = Integer.toString(date.get(Calendar.DATE));
 		hour = Integer.toString(date.get(Calendar.HOUR_OF_DAY));
@@ -78,6 +114,13 @@ public class Transaction {
 		return year + month + day + hour + minute + second;
 	}
 
+	/**
+	 * Returns a String format date, used in paper statements, from a Calendar type
+	 * of date.
+	 * 
+	 * @param date - Calendar type
+	 * @return a String in format YYYYMMDDHHMMSS
+	 */
 	public static String returnMMslashDDFromCalendar(Calendar date) {
 		String month, day;
 		month = Integer.toString(date.get(Calendar.MONTH) + 1);
@@ -140,6 +183,7 @@ public class Transaction {
 	}
 
 // ------------------- compare-by-criteria methods -------------------------
+//	
 //  ALWAYS just ONE property of the two Transactions is being compared;
 //	
 //  if NEGATIVE number is returned, the calling Transaction
@@ -175,22 +219,41 @@ public class Transaction {
 	}
 
 // ------------------- other methods ---------------------------------------	
-
+//
+	/**
+	 * 
+	 * @param firstDate, secondDate - the boundaries, inside which the Transaction
+	 *                   should be
+	 * @return TRUE - the Transaction has been time-stamped between the boundary
+	 *         dates FALSE - the Transaction has been time-stamped outside the
+	 *         boundary dates
+	 */
 	public boolean isBetweenDates(Calendar firstDate, Calendar secondDate) {
 		return (!postedDate.before(firstDate) && !postedDate.after(secondDate));
 	}
 
 	@Override
 	public String toString() {
-		String output = "THIS TRANSACTION:\n------------------------------------\n";
-		output += "Posted Date:      " + returnMMslashDDFromCalendar(this.postedDate) + "\n";
-		output += "Reference Number: " + this.refNumber + "\n";
-		output += "Description:      " + this.description + "\n";
-		output += "Memo:             " + this.memo + "\n";
-		output += "Amount:           " + String.format("$ %.2f", amount) + "\n";
-		output += "Category:         " + this.category + "\n------------------------------------\n";
+		String output = returnMMslashDDFromCalendar(this.postedDate) + "\t";
+		output += this.refNumber + "\t";
+		output += this.description + "\t";
+		output += this.memo + "\t";
+		output += String.format("$%7.2f", amount) + "\t";
+		output += this.category;
 		return output;
 	}
+
+//	@Override
+//	public String toString() {
+//		String output = "THIS TRANSACTION:\n------------------------------------\n";
+//		output += "Posted Date:      " + returnMMslashDDFromCalendar(this.postedDate) + "\n";
+//		output += "Reference Number: " + this.refNumber + "\n";
+//		output += "Description:      " + this.description + "\n";
+//		output += "Memo:             " + this.memo + "\n";
+//		output += "Amount:           " + String.format("$ %.2f", amount) + "\n";
+//		output += "Category:         " + this.category + "\n------------------------------------\n";
+//		return output;
+//	}
 
 //	public static void main(String[] args) {
 //		System.out.println(returnOFXFromCalendar(returnCalendarFromOFX("20220415201405")));
