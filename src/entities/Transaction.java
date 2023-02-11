@@ -51,6 +51,13 @@ public class Transaction {
 	public static Calendar returnCalendarFromOFX(String stringDate) {
 		Calendar date = Calendar.getInstance();
 		int year, month, day, hour, minute, second;
+//		if stringDate is not complete (no HHMMSS), add zeros to complete it and 
+//		preserve the value of date; if is even shorter than that (no apparent
+//		YYYYMMDD) or otherwise compromised, then catch clause will get it and
+//		change the date to 1900/01/01. 
+		if (stringDate.length() < 14) {
+			stringDate += "000000";
+		}
 		try {
 			year = Integer.parseInt(stringDate.substring(0, 4));
 //			the twelve months in Calendar range from 0-11
