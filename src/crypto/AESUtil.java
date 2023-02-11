@@ -25,11 +25,14 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
-// This was taken from GitHub, where one is forwarded from a teaching course website, hosted by
-// Baeldung company. The link to it is https://www.baeldung.com/java-aes-encryption-decryption.
-
-// https://github.com/eugenp/tutorials/tree/master/core-java-modules/core-java-security-algorithms
-
+/**
+ * This was taken from GitHub, where one is forwarded from a teaching course
+ * website, hosted by Baeldung company. The link to it is
+ * https://www.baeldung.com/java-aes-encryption-decryption. THANK YOU!!!
+ * 
+ * Source:
+ * https://github.com/eugenp/tutorials/tree/master/core-java-modules/core-java-security-algorithms
+ */
 public class AESUtil {
 
 	public static String encrypt(String algorithm, String input, SecretKey key, IvParameterSpec iv)
@@ -152,23 +155,23 @@ public class AESUtil {
 		return new String(cipher.doFinal(Base64.getDecoder().decode(cipherText)));
 	}
 
-	public static void main(String[] args)
-			throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, NoSuchPaddingException,
-			InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException {
-		String input = "TEST1 TEST2 TEST3 TEST4";
-		String CT = "";
-		String PT = "";
-		for (int i = 1; i <= 5; i++) {
-			System.out.println("Attempt # " + i + ":");
-			SecretKey SK = getKeyFromPassword("P@55word", "12345");
-			IvParameterSpec IV = generateIv();
-			CT = encryptPasswordBased(input, SK, IV);
-			PT = decryptPasswordBased(CT, SK, IV);
-			System.out.println("Original text   = " + input);
-			System.out.println("Ciphered text   = " + CT);
-			System.out.println("Deciphered text = " + PT + "\n");
-		}
-		System.out.println("THANK YOU!\n\n");
-	}
+//	public static void main(String[] args)
+//			throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, NoSuchPaddingException,
+//			InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException {
+//		String input = "TEST1 TEST2 TEST3 TEST4";
+//		String CT = "";
+//		String PT = "";
+//		for (int i = 1; i <= 5; i++) {
+//			System.out.println("Attempt # " + i + ":");
+//			SecretKey SK = getKeyFromPassword("P@55word", "12345");
+//			IvParameterSpec IV = generateIv();
+//			CT = encryptPasswordBased(input, SK, IV);
+//			PT = decryptPasswordBased(CT, SK, IV);
+//			System.out.println("Original text   = " + input);
+//			System.out.println("Ciphered text   = " + CT);
+//			System.out.println("Deciphered text = " + PT + "\n");
+//		}
+//		System.out.println("THANK YOU!\n\n");
+//	}
 
 }
