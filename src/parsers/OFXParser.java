@@ -371,7 +371,7 @@ public class OFXParser {
 //		File file = new File("/Users/starnet/Downloads/Checking1.qfx");
 //		instance();
 //		t = OFXParser.ofxParser(file);
-//		ListIterator<Transaction> i = t.sort(Transaction.DESCRIPTION);
+//		ListIterator<Transaction> i = t.listIterator(); // t.sort(Transaction.DESCRIPTION);
 //		while (i.hasNext()) {
 //			System.out.println(i.next());
 //		}
